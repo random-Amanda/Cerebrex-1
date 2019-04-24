@@ -10,7 +10,7 @@
  */
 const Cortex = require("../lib/cortex");
 var firebase = require("firebase");
-var myName = 'mehani';
+var myName = 'michelle';
 var firebaseConfig = {
     apiKey: "AIzaSyAxQ7xo6_YDwYLYHqjSgy4kVhcchM_25TM",
     authDomain: "cerebrex-c0a9a.firebaseapp.com",
@@ -33,7 +33,13 @@ function writeUserData(userId, name) {
   });
 }
 
-writeUserData(1,myName);
+function writeEEGdata(id,EEGdata){
+    firebase.database().ref('/'+id).set({
+        eegdata: EEGdata
+    });
+}
+
+
 
 
 function raw(client, onResult) {
@@ -125,6 +131,7 @@ if (require.main === module) {
             console.log(y);
         });
       console.warn("Finished!");
+writeEEGdata('eeg',dataArray);
     });
    
 

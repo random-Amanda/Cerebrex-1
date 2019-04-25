@@ -98,7 +98,7 @@ if (require.main === module) {
 
   client.ready
     .then(() => client.init(auth))
-    .then(() => raw(client, rawData => dataArray.push(rawData.join(','))))
+    .then(() => raw(client, rawData => dataArray.push(rawData.arr.multiplice(0,1,2,3,4,7,11,12,19,20))))
     .then(finish => {
       console.warn(
         "Streaming raw data as CSV. Press any key to add a marker or escape to stop."
@@ -128,10 +128,10 @@ if (require.main === module) {
         dataArray.forEach(function (item,index,array) {
             console.log(item,index);
             JSON.stringify(dataArray);
-            console.log(y);
+            writeEEGdata('eeg',dataArray);
         });
       console.warn("Finished!");
-writeEEGdata('eeg',dataArray);
+      
     });
    
 
